@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Şifre Güvenlik Aracı</title>
+</head>
+<body>
+
+<h2>🔐 Şifre Oluşturucu</h2>
+<button onclick="olustur()">Şifre Oluştur</button>
+
+<p><b>Şifre:</b> <span id="sifre"></span></p>
+<p><b>Güç:</b> <span id="guc"></span></p>
+<p><b>Kırılma Süresi:</b> <span id="sure"></span></p>
+
+<hr>
+
+<h2>🎯 Şifre Analizi</h2>
+
+<input type="text" id="kullaniciSifre" placeholder="Şifreni gir">
+<button onclick="analiz()">Analiz Et</button>
+
+<p><b>Güç:</b> <span id="analizGuc"></span></p>
+<p><b>Kırılma Süresi:</b> <span id="analizSure"></span></p>
+
+<script>
+function olustur() {
+    fetch("http://127.0.0.1:5000/sifre")
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("sifre").innerText = data.sifre;
+        document.getElementById("guc").innerText = data.guc;
+        document.getElementById("sure").innerText = data.sure;
+    });
+}
+
+function analiz() {
+    let sifre = document.getElementById("kullaniciSifre").value;
+
+    fetch("http://127.0.0.1:5000/analiz", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ sifre: sifre })
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("analizGuc").innerText = data.guc;
+        document.getElementById("analizSure").innerText = data.sure;
+    });
+}
+</script>
+
+</body>
+</html>
