@@ -1,4 +1,4 @@
-# A web based password-is-being-generated.-Password-security-analysis
+# A web based password is being generated. Password security analysis
 Web Tabanlı Şifre Oluşturucu ve Güvenlik Analiz Aracı (Gelişmiş Proje)
 # **1. Proje Amacı**
 Bu proje, kullanıcıların güçlü şifreler oluşturmasını ve mevcut şifrelerinin güvenlik seviyesini analiz etmesini sağlayan web tabanlı bir uygulamadır. Ayrıca brute-force saldırılarına karşı tahmini kırılma süresi hesaplaması yapmaktadır.
